@@ -100,14 +100,12 @@ class HomeViewModel {
         return false
     }
     
-    // Mark:- Rename / File
+    // Mark:- Rename Directory / File
     
     func renameFile(oldfileName: String, newFileName: String) -> Bool {
         do {
-            let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            let documentDirectory = URL(fileURLWithPath: path)
-            let originPath = documentDirectory.appendingPathComponent(oldfileName)
-            let destinationPath = documentDirectory.appendingPathComponent(newFileName)
+            let originPath = pathUrl.appendingPathComponent(oldfileName)
+            let destinationPath = pathUrl.appendingPathComponent(newFileName)
             try FileManager.default.moveItem(at: originPath, to: destinationPath)
             return true
         } catch {
