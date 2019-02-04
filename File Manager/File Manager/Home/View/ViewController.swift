@@ -72,12 +72,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let optionMenu = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
             
             let copyAction = UIAlertAction(title: "Copy", style: .default, handler: {
-                [weak self] _  in
+                _  in
                 
             })
             
             let moveAction = UIAlertAction(title: "Move", style: .default, handler: {
-                [weak self] _  in
+                _  in
                 
             })
             
