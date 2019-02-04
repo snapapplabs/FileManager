@@ -11,9 +11,11 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
+        print(viewModel.createDirectory(directoryName: "Shohan"))
     }
     
     @IBAction func createFileAction(_ sender: Any) {
+        print(viewModel.getFileList())
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,7 +32,7 @@ class ViewController: UIViewController {
         tableView.register(UINib(nibName: tableviewCellIdentifier, bundle: nil), forCellReuseIdentifier: tableviewCellIdentifier)
         tableView.tableFooterView = UIView()
         
-        viewModel.getFileList()
+        print(viewModel.getFileList())
     }
 }
 

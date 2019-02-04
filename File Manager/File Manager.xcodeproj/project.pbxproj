@@ -72,6 +72,7 @@
 		1756537A2208AB6900D9B6D9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				175653832208B8C900D9B6D9 /* Model */,
 				1756537C2208AB7800D9B6D9 /* View Model */,
 				1756537B2208AB7300D9B6D9 /* View */,
 			);
@@ -95,6 +96,13 @@
 				175653812208B1B600D9B6D9 /* HomeViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		175653832208B8C900D9B6D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

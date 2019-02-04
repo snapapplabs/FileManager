@@ -11,17 +11,30 @@ import UIKit
 
 class HomeViewModel {
     
+    fileprivate let pathUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
+    
     func getFileList() -> [String] {
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String
-        let url = URL(fileURLWithPath: path)
-        let filePath = url.path
+        let filePath = pathUrl.path
         let fileManager = FileManager.default
         do {
-            try fileManager.contentsOfDirectory(atPath: filePath)
-        } catch {
-            
+            let fileList = try fileManager.contentsOfDirectory(atPath: filePath)
+            return fileList
+        } catch let error as NSError {
+            debugPrint(error.localizedDescription)
         }
+        
         return []
+    }
+    
+    func createDirectory(directoryName: String) -> Bool {
+        let logsPath = pathUrl.appendingPathComponent(directoryName)
+        do {
+            try FileManager.default.createDirectory(atPath: logsPath.path, withIntermediateDirectories: true, attributes: nil)
+            return true
+        } catch let error as NSError {
+            debugPrint(error.localizedDescription)
+            return false
+        }
     }
     
 }
