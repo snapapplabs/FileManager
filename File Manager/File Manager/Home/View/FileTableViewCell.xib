@@ -40,6 +40,9 @@
                         </constraints>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" image="more_verical_icon"/>
+                        <connections>
+                            <action selector="moreButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IbK-PL-JeX"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -53,7 +56,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="132.80000000000001" y="156.97151424287858"/>
+            <connections>
+                <outlet property="iconImageView" destination="zBK-Kv-uhr" id="KsI-dH-Udc"/>
+                <outlet property="titleLabel" destination="OU0-m2-8M1" id="2Hf-7g-oiq"/>
+            </connections>
+            <point key="canvasLocation" x="-34" y="123"/>
         </tableViewCell>
     </objects>
     <resources>
