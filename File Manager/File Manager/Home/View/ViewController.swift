@@ -81,6 +81,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 
             })
             
+            let renameAction = UIAlertAction(title: "Rename", style: .default, handler: { _  in
+                let oldName = self.fileList[indexPath.row].fileName
+                Utilities().getTextFromAlert(title: "New Name", vc: self) { (text) in
+                    if self.fileList[indexPath.row].fileType == FileType.txt {
+                        let newName = text ?? ""
+                        debugPrint(self.viewModel.renameFile(oldfileName: oldName, newFileName: "\(newName).txt"))
+                    } else {
+                        debugPrint(self.viewModel.renameFile(oldfileName: oldName, newFileName: text ?? ""))
+                    }
+                    self.reloadTableView()
+                }
+            })
+            
             let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {  [weak self] _  in
                 debugPrint(self?.viewModel.removeFile(fileName: self?.fileList[indexPath.row].fileName ?? "") ?? false)
                 self?.reloadTableView()
@@ -92,7 +105,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 optionMenu.addAction(copyAction)
                 optionMenu.addAction(moveAction)
             }
-            
+            optionMenu.addAction(renameAction)
             optionMenu.addAction(deleteAction)
             optionMenu.addAction(cancelAction)
             
