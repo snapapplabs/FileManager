@@ -60,7 +60,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint("Position ===> \(indexPath.row)")
+        if fileList[indexPath.row].fileType == FileType.txt {
+            debugPrint(viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName))
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
