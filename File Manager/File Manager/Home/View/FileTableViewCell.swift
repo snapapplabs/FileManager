@@ -14,8 +14,12 @@ class FileTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func moreButton(_ sender: Any) {
-        
+        if let moreButtonAction = moreButtonAction {
+            moreButtonAction()
+        }
     }
+    
+    var moreButtonAction: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
