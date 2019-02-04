@@ -11,13 +11,21 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
-        print(viewModel.createDirectory(directoryName: "Shohan"))
-        reloadTableView()
+        Utilities().getTextFromAlert(title: "Directory Name",vc: self) { (text) in
+            print(self.viewModel.createDirectory(directoryName: text ?? ""))
+            self.reloadTableView()
+        }
     }
     
     @IBAction func createFileAction(_ sender: Any) {
-        debugPrint(viewModel.createNextTextFile(fileName: "test", fileData: "Write First file."))
-        reloadTableView()
+        Utilities().getTextFromAlert(title: "File Name", vc: self) { (text) in
+            let fileName = text ?? ""
+            Utilities().getTextFromAlert(title: "File Data", vc: self) { (data) in
+                let textData = data ?? ""
+                debugPrint(self.viewModel.createNextTextFile(fileName: fileName, fileData: textData))
+                self.reloadTableView()
+            }
+        }
     }
     
     @IBOutlet weak var tableView: UITableView!
