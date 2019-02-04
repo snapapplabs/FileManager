@@ -30,6 +30,11 @@ class FileTableViewCell: UITableViewCell {
     
     func setup(item: FileModel) {
         titleLabel.text = item.fileName
+        if item.fileType == FileType.txt {
+            iconImageView.image = UIImage(named: "txt-icon")
+        } else {
+            iconImageView.image = UIImage(named: "folder-icon")
+        }
     }
     
 }

@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
         print(viewModel.createDirectory(directoryName: "Shohan"))
+        fileList = viewModel.getFileList()
+        tableView.reloadData()
     }
     
     @IBAction func createFileAction(_ sender: Any) {
@@ -22,6 +24,7 @@ class ViewController: UIViewController {
     
     fileprivate let tableviewCellIdentifier = "FileTableViewCell"
     fileprivate let viewModel = HomeViewModel()
+    fileprivate var fileList = [FileModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,8 @@ class ViewController: UIViewController {
         tableView.register(UINib(nibName: tableviewCellIdentifier, bundle: nil), forCellReuseIdentifier: tableviewCellIdentifier)
         tableView.tableFooterView = UIView()
         
-        print(viewModel.getFileList())
+        fileList = viewModel.getFileList()
+        tableView.reloadData()
     }
 }
 
@@ -42,12 +46,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return fileList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableviewCellIdentifier, for: indexPath) as! FileTableViewCell
-        
+        cell.setup(item: fileList[indexPath.row])
         return cell
     }
     
