@@ -54,14 +54,38 @@
 		175653672208AA7E00D9B6D9 /* File Manager */ = {
 			isa = PBXGroup;
 			children = (
+				1756537A2208AB6900D9B6D9 /* Home */,
 				175653682208AA7E00D9B6D9 /* AppDelegate.swift */,
-				1756536A2208AA7E00D9B6D9 /* ViewController.swift */,
-				1756536C2208AA7E00D9B6D9 /* Main.storyboard */,
 				1756536F2208AA8000D9B6D9 /* Assets.xcassets */,
 				175653712208AA8000D9B6D9 /* LaunchScreen.storyboard */,
 				175653742208AA8000D9B6D9 /* Info.plist */,
 			);
 			path = "File Manager";
+			sourceTree = "<group>";
+		};
+		1756537A2208AB6900D9B6D9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1756537C2208AB7800D9B6D9 /* View Model */,
+				1756537B2208AB7300D9B6D9 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1756537B2208AB7300D9B6D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1756536A2208AA7E00D9B6D9 /* ViewController.swift */,
+				1756536C2208AA7E00D9B6D9 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1756537C2208AB7800D9B6D9 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
