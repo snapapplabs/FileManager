@@ -17,7 +17,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Irw-eU-zdm">
+                                <rect key="frame" x="8" y="72" width="359" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrZ-sX-kn9">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="48"/>
+                                        <color key="backgroundColor" red="0.15509986880000001" green="0.6857129931" blue="0.60238951439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Create Directory">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ix8-b3-Nz1">
+                                        <rect key="frame" x="187.5" y="0.0" width="171.5" height="48"/>
+                                        <color key="backgroundColor" red="0.38431372549999998" green="0.6705882353" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Create File">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="ewx-RH-lbx"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r0N-Ys-omn">
+                                <rect key="frame" x="0.0" y="128" width="375" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="r0N-Ys-omn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="H5J-s9-Rx4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="r0N-Ys-omn" secondAttribute="bottom" constant="20" id="MMm-iN-Rjn"/>
+                            <constraint firstItem="r0N-Ys-omn" firstAttribute="top" secondItem="Irw-eU-zdm" secondAttribute="bottom" constant="8" id="WTX-rD-Wb9"/>
+                            <constraint firstItem="r0N-Ys-omn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aBx-2x-Uqc"/>
+                            <constraint firstItem="Irw-eU-zdm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="g02-2T-OSx"/>
+                            <constraint firstItem="Irw-eU-zdm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="mqq-zz-CVA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Irw-eU-zdm" secondAttribute="trailing" constant="8" id="r1e-cT-Zv0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fZB-AG-OhZ"/>
