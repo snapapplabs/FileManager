@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let tableviewCellIdentifier = "FileTableViewCell"
+    fileprivate let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: tableviewCellIdentifier, bundle: nil), forCellReuseIdentifier: tableviewCellIdentifier)
         tableView.tableFooterView = UIView()
+        
+        viewModel.getFileList()
     }
 }
 

@@ -7,9 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel {
     
-    
+    func getFileList() -> [String] {
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as String
+        let url = URL(fileURLWithPath: path)
+        let filePath = url.path
+        let fileManager = FileManager.default
+        do {
+            try fileManager.contentsOfDirectory(atPath: filePath)
+        } catch {
+            
+        }
+        return []
+    }
     
 }
