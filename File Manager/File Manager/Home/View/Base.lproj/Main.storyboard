@@ -27,13 +27,19 @@
                                         <state key="normal" title="Create Directory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createDirectoryAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yhF-aN-DoT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ix8-b3-Nz1">
                                         <rect key="frame" x="187.5" y="0.0" width="171.5" height="48"/>
                                         <color key="backgroundColor" red="0.38431372549999998" green="0.6705882353" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Create File">
+                                        <state key="normal" title="Create Text File">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createFileAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0zN-IB-YHu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -58,6 +64,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="fZB-AG-OhZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="r0N-Ys-omn" id="fF9-Sk-sxP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
