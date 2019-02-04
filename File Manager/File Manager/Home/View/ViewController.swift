@@ -111,6 +111,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             
             self.present(optionMenu, animated: true, completion: nil)
         }
+        cell.selectionStyle = .none
         return cell
     }
     
