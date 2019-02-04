@@ -10,9 +10,15 @@ import Foundation
 
 struct FileModel {
     var fileName = ""
-    var fileType = ""
+    var fileType = FileType.none
     
     init() {
         
     }
+}
+
+enum FileType: String {
+    case directory = "directory"
+    case txt = "txt"
+    case none = "none"
 }

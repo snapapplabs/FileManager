@@ -28,4 +28,8 @@ class FileTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setup(item: FileModel) {
+        titleLabel.text = item.fileName
+    }
+    
 }

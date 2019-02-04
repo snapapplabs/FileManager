@@ -13,6 +13,8 @@ class HomeViewModel {
     
     fileprivate let pathUrl = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
     
+    // MARK:- Get File and Directory List
+    
     func getFileList() -> [FileModel] {
         
         var fileModelList = [FileModel]()
@@ -25,9 +27,9 @@ class HomeViewModel {
                 var model = FileModel()
                 model.fileName = file
                 if file.contains(".txt") {
-                    model.fileType = "txt"
+                    model.fileType = FileType.txt
                 } else {
-                    model.fileType = "directory"
+                    model.fileType = FileType.directory
                 }
                 fileModelList.append(model)
             }
@@ -37,6 +39,8 @@ class HomeViewModel {
         
         return fileModelList
     }
+    
+    // MARK:- Create new Directory
     
     func createDirectory(directoryName: String) -> Bool {
         let logsPath = pathUrl.appendingPathComponent(directoryName)
