@@ -53,4 +53,20 @@ class HomeViewModel {
         }
     }
     
+    // MARK:- Create new Text File
+    
+    func createNextTextFile(fileName: String, fileData: String) -> Bool {
+        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = directory.appendingPathComponent("\(fileName).txt")
+            do {
+                try fileData.write(to: fileURL, atomically: false, encoding: .utf8)
+                return true
+            } catch {
+                debugPrint("write failed.")
+            }
+        }
+        
+        return false
+    }
+    
 }

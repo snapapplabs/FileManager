@@ -12,12 +12,12 @@ class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
         print(viewModel.createDirectory(directoryName: "Shohan"))
-        fileList = viewModel.getFileList()
-        tableView.reloadData()
+        reloadTableView()
     }
     
     @IBAction func createFileAction(_ sender: Any) {
-        print(viewModel.getFileList())
+        debugPrint(viewModel.createNextTextFile(fileName: "test", fileData: "Write First file."))
+        reloadTableView()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,6 +35,10 @@ class ViewController: UIViewController {
         tableView.register(UINib(nibName: tableviewCellIdentifier, bundle: nil), forCellReuseIdentifier: tableviewCellIdentifier)
         tableView.tableFooterView = UIView()
         
+        reloadTableView()
+    }
+    
+    func reloadTableView() {
         fileList = viewModel.getFileList()
         tableView.reloadData()
     }
