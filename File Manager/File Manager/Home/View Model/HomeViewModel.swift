@@ -57,7 +57,7 @@ class HomeViewModel {
     
     func createNextTextFile(fileName: String, fileData: String) -> Bool {
         if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = directory.appendingPathComponent("\(fileName).txt")
+            let fileURL = directory.appendingPathComponent(fileName)
             do {
                 try fileData.write(to: fileURL, atomically: false, encoding: .utf8)
                 return true
@@ -82,6 +82,22 @@ class HomeViewModel {
             }
         }
         return ""
+    }
+    
+    // Mark:- Delete Directory / File
+    
+    func removeFile(fileName: String) -> Bool {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let removeFile = dir.appendingPathComponent(fileName)
+            let fileManager = FileManager.default
+            do{
+                try fileManager.removeItem(at: removeFile)
+                return true
+            }catch{
+                print("cant remove file...")
+            }
+        }
+        return false
     }
     
 }

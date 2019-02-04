@@ -17,6 +17,8 @@
 		175653822208B1B600D9B6D9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175653812208B1B600D9B6D9 /* HomeViewModel.swift */; };
 		175653852208B93700D9B6D9 /* FileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175653842208B93700D9B6D9 /* FileModel.swift */; };
 		175653882208C1E500D9B6D9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175653872208C1E500D9B6D9 /* Utilities.swift */; };
+		1756538C2208C9F500D9B6D9 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756538A2208C9F500D9B6D9 /* EditViewController.swift */; };
+		1756538D2208C9F500D9B6D9 /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1756538B2208C9F500D9B6D9 /* EditViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		175653812208B1B600D9B6D9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		175653842208B93700D9B6D9 /* FileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileModel.swift; sourceTree = "<group>"; };
 		175653872208C1E500D9B6D9 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		1756538A2208C9F500D9B6D9 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		1756538B2208C9F500D9B6D9 /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		175653672208AA7E00D9B6D9 /* File Manager */ = {
 			isa = PBXGroup;
 			children = (
+				175653892208C9DE00D9B6D9 /* Edit */,
 				175653862208C1D700D9B6D9 /* Utilities */,
 				1756537A2208AB6900D9B6D9 /* Home */,
 				175653682208AA7E00D9B6D9 /* AppDelegate.swift */,
@@ -117,6 +122,15 @@
 				175653872208C1E500D9B6D9 /* Utilities.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		175653892208C9DE00D9B6D9 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				1756538A2208C9F500D9B6D9 /* EditViewController.swift */,
+				1756538B2208C9F500D9B6D9 /* EditViewController.xib */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +193,7 @@
 			files = (
 				175653732208AA8000D9B6D9 /* LaunchScreen.storyboard in Resources */,
 				175653802208AD9800D9B6D9 /* FileTableViewCell.xib in Resources */,
+				1756538D2208C9F500D9B6D9 /* EditViewController.xib in Resources */,
 				175653702208AA8000D9B6D9 /* Assets.xcassets in Resources */,
 				1756536E2208AA7E00D9B6D9 /* Main.storyboard in Resources */,
 			);
@@ -197,6 +212,7 @@
 				175653852208B93700D9B6D9 /* FileModel.swift in Sources */,
 				175653692208AA7E00D9B6D9 /* AppDelegate.swift in Sources */,
 				175653822208B1B600D9B6D9 /* HomeViewModel.swift in Sources */,
+				1756538C2208C9F500D9B6D9 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

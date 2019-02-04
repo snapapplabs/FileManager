@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SaveDelegate {
+    func saveTextData(fileName: String, textData: String)
+}
+
 class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
@@ -22,7 +26,7 @@ class ViewController: UIViewController {
             let fileName = text ?? ""
             Utilities().getTextFromAlert(title: "File Data", vc: self) { (data) in
                 let textData = data ?? ""
-                debugPrint(self.viewModel.createNextTextFile(fileName: fileName, fileData: textData))
+                debugPrint(self.viewModel.createNextTextFile(fileName: "\(fileName).txt", fileData: textData))
                 self.reloadTableView()
             }
         }
@@ -64,16 +68,58 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableviewCellIdentifier, for: indexPath) as! FileTableViewCell
         cell.setup(item: fileList[indexPath.row])
+        cell.moreButtonAction = {
+            let optionMenu = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
+            
+            let copyAction = UIAlertAction(title: "Copy", style: .default, handler: {
+                [weak self] _  in
+                
+            })
+            
+            let moveAction = UIAlertAction(title: "Move", style: .default, handler: {
+                [weak self] _  in
+                
+            })
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {  [weak self] _  in
+                debugPrint(self?.viewModel.removeFile(fileName: self?.fileList[indexPath.row].fileName ?? "") ?? false)
+                self?.reloadTableView()
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            if self.fileList[indexPath.row].fileType == FileType.txt {
+                optionMenu.addAction(copyAction)
+                optionMenu.addAction(moveAction)
+            }
+            
+            optionMenu.addAction(deleteAction)
+            optionMenu.addAction(cancelAction)
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if fileList[indexPath.row].fileType == FileType.txt {
             debugPrint(viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName))
+            let vc = EditViewController()
+            vc.delegate = self
+            vc.text = viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName)
+            vc.fileName = fileList[indexPath.row].fileName
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+extension ViewController: SaveDelegate {
+    func saveTextData(fileName: String, textData: String) {
+        debugPrint(self.viewModel.createNextTextFile(fileName: fileName, fileData: textData))
+        self.reloadTableView()
     }
 }
