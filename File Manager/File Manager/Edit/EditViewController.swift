@@ -24,6 +24,7 @@ class EditViewController: UIViewController {
         super.viewDidLoad()
 
         textView.text = text
+        textView.becomeFirstResponder()
     }
 
 }
