@@ -126,13 +126,23 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if isCopyEnable {
             if fileList[indexPath.row].fileType == FileType.directory {
                 self.newPath = self.fileList[indexPath.row].fileName + "/" + oldPath
-                self.viewModel.copyFile(oldPth: self.oldPath, newPath: self.newPath)
+                if self.viewModel.copyFile(oldPth: self.oldPath, newPath: self.newPath) {
+                    let alertController = UIAlertController(title: "Success", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
             self.isCopyEnable = false
         } else if isMoveEnable {
             if fileList[indexPath.row].fileType == FileType.directory {
                 self.newPath = self.fileList[indexPath.row].fileName + "/" + oldPath
-                self.viewModel.moveFile(oldPth: self.oldPath, newPath: self.newPath)
+                if self.viewModel.moveFile(oldPth: self.oldPath, newPath: self.newPath) {
+                    let alertController = UIAlertController(title: "Success", message: nil, preferredStyle: UIAlertController.Style.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default,handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
             self.isMoveEnable = false
         } else {
