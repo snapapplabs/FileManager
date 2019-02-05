@@ -101,9 +101,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             })
             
-            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {  [weak self] _  in
-                debugPrint(self?.viewModel.removeFile(fileName: self?.fileList[indexPath.row].fileName ?? "") ?? false)
-                self?.reloadTableView()
+            let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {   _  in
+                debugPrint(self.viewModel.removeFile(subPath: self.subPath, fileName: self.fileList[indexPath.row].fileName))
+                self.reloadTableView()
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

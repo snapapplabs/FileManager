@@ -89,9 +89,9 @@ class HomeViewModel {
     
     // Mark:- Delete Directory / File
     
-    func removeFile(fileName: String) -> Bool {
+    func removeFile(subPath: String, fileName: String) -> Bool {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
-            let removeFile = dir.appendingPathComponent(fileName)
+            let removeFile = dir.appendingPathComponent(subPath + "/" + fileName)
             let fileManager = FileManager.default
             do{
                 try fileManager.removeItem(at: removeFile)
