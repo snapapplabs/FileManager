@@ -15,11 +15,14 @@ class HomeViewModel {
     
     // MARK:- Get File and Directory List
     
-    func getFileList() -> [FileModel] {
+    func getFileList(subPath: String) -> [FileModel] {
         
         var fileModelList = [FileModel]()
         
-        let filePath = pathUrl.path
+        let filePath = pathUrl.path + subPath
+        
+        debugPrint(filePath)
+        
         let fileManager = FileManager.default
         do {
             let fileList = try fileManager.contentsOfDirectory(atPath: filePath)
@@ -42,8 +45,8 @@ class HomeViewModel {
     
     // MARK:- Create new Directory
     
-    func createDirectory(directoryName: String) -> Bool {
-        let logsPath = pathUrl.appendingPathComponent(directoryName)
+    func createDirectory(subPath: String, directoryName: String) -> Bool {
+        let logsPath = pathUrl.appendingPathComponent(subPath + "/" + directoryName)
         do {
             try FileManager.default.createDirectory(atPath: logsPath.path, withIntermediateDirectories: true, attributes: nil)
             return true

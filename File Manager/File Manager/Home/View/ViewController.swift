@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     @IBAction func createDirectoryAction(_ sender: Any) {
         Utilities().getTextFromAlert(title: "Directory Name",vc: self) { (text) in
-            print(self.viewModel.createDirectory(directoryName: text ?? ""))
+            print(self.viewModel.createDirectory(subPath: self.subPath, directoryName: text ?? ""))
             self.reloadTableView()
         }
     }
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     fileprivate let tableviewCellIdentifier = "FileTableViewCell"
     fileprivate let viewModel = HomeViewModel()
     fileprivate var fileList = [FileModel]()
+    var subPath = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     func reloadTableView() {
-        fileList = viewModel.getFileList()
+        fileList = viewModel.getFileList(subPath: subPath)
         tableView.reloadData()
     }
 }
@@ -122,6 +123,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             vc.delegate = self
             vc.text = viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName)
             vc.fileName = fileList[indexPath.row].fileName
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            vc.subPath = subPath + "/\(fileList[indexPath.row].fileName)"
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
