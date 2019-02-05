@@ -38,6 +38,10 @@ class ViewController: UIViewController {
     fileprivate let viewModel = HomeViewModel()
     fileprivate var fileList = [FileModel]()
     var subPath = ""
+    var isCopyEnable = false
+    var oldPath = ""
+    var newPath = ""
+    var isMoveEnable = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,12 +78,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             
             let copyAction = UIAlertAction(title: "Copy", style: .default, handler: {
                 _  in
-                
+                self.oldPath = self.subPath + "/" + self.fileList[indexPath.row].fileName
+                self.isCopyEnable = true
             })
             
             let moveAction = UIAlertAction(title: "Move", style: .default, handler: {
                 _  in
-                
+                self.oldPath = self.subPath + "/" + self.fileList[indexPath.row].fileName
+                self.isMoveEnable = true
             })
             
             let renameAction = UIAlertAction(title: "Rename", style: .default, handler: { _  in
@@ -117,18 +123,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if fileList[indexPath.row].fileType == FileType.txt {
-            debugPrint(viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName))
-            let vc = EditViewController()
-            vc.delegate = self
-            vc.text = viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName)
-            vc.fileName = fileList[indexPath.row].fileName
-            self.navigationController?.pushViewController(vc, animated: true)
+        if isCopyEnable {
+            if fileList[indexPath.row].fileType == FileType.directory {
+                self.newPath = self.fileList[indexPath.row].fileName + "/" + oldPath
+                self.viewModel.copyFile(oldPth: self.oldPath, newPath: self.newPath)
+            }
+            self.isCopyEnable = false
+        } else if isMoveEnable {
+            if fileList[indexPath.row].fileType == FileType.directory {
+                self.newPath = self.fileList[indexPath.row].fileName + "/" + oldPath
+                self.viewModel.moveFile(oldPth: self.oldPath, newPath: self.newPath)
+            }
+            self.isMoveEnable = false
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            vc.subPath = subPath + "/\(fileList[indexPath.row].fileName)"
-            self.navigationController?.pushViewController(vc, animated: true)
+            if fileList[indexPath.row].fileType == FileType.txt {
+                debugPrint(viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName))
+                let vc = EditViewController()
+                vc.delegate = self
+                vc.text = viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName)
+                vc.fileName = fileList[indexPath.row].fileName
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                vc.subPath = subPath + "/\(fileList[indexPath.row].fileName)"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

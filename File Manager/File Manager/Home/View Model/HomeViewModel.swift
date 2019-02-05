@@ -117,4 +117,35 @@ class HomeViewModel {
         return false
     }
     
+    //Mark:- Copy File to Folder
+    
+    func copyFile(oldPth: String, newPath: String) {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let originalFile = dir.appendingPathComponent(oldPth)
+            let copyFile = dir.appendingPathComponent(newPath)
+            
+            let fileManager = FileManager.default
+            do {
+                try fileManager.copyItem(at: originalFile, to: copyFile)
+            } catch {
+                print("can't copy")
+            }
+        }
+    }
+    
+    //Mark:- move File to folder
+    
+    func moveFile(oldPth: String, newPath: String) {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let oldPath = dir.appendingPathComponent(oldPth)
+            let newPath = dir.appendingPathComponent(newPath)
+            let fileManager = FileManager.default
+            do{
+                try fileManager.moveItem(at: oldPath, to: newPath)
+            }catch{
+                print("cant move the file...")
+            }
+        }
+    }
+    
 }
