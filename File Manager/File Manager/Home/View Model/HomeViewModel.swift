@@ -74,9 +74,9 @@ class HomeViewModel {
     
     // Mark:- Read text File Data
     
-    func getTextFileData(fileName: String) -> String {
+    func getTextFileData(subPath: String, fileName: String) -> String {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = dir.appendingPathComponent(fileName)
+            let fileURL = dir.appendingPathComponent(subPath + "/" + fileName)
             do{
                 let text = try String(contentsOf: fileURL, encoding: .utf8)
                 return text

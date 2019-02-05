@@ -147,10 +147,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             self.isMoveEnable = false
         } else {
             if fileList[indexPath.row].fileType == FileType.txt {
-                debugPrint(viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName))
+                debugPrint(viewModel.getTextFileData(subPath: self.subPath, fileName: fileList[indexPath.row].fileName))
                 let vc = EditViewController()
                 vc.delegate = self
-                vc.text = viewModel.getTextFileData(fileName: fileList[indexPath.row].fileName)
+                vc.text = viewModel.getTextFileData(subPath: self.subPath, fileName: fileList[indexPath.row].fileName)
                 vc.fileName = fileList[indexPath.row].fileName
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
